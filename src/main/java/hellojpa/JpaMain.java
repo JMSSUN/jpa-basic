@@ -33,12 +33,23 @@ public class JpaMain {
             ****수정
             findMember.setName("HelloJPA");
 
-            */
-
             List<Member> result = em.createQuery("select m from Member as m", Member.class).getResultList();
             for (Member member : result) {
                 System.out.println("member = " + member.getName());
             }
+
+           */
+
+            // 비영속
+//            Member member = new Member();
+//            member.setId(101L);
+//            member.setName("HelloJPA");
+
+            // 영속
+//            em.persist(member);
+
+            Member member = em.find(Member.class, 150L); //데이터 찾아서
+            member.setName("ZZ");// 변경
 
             tx.commit();
         } catch(Exception e) {
