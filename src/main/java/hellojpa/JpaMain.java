@@ -47,10 +47,12 @@ public class JpaMain {
 
             // 영속
 //            em.persist(member);
+            Member m = new Member();
+            m.setId(2L);
+            m.setUsername("B");
+            m.setRoleType(RoleType.ADMIN);
 
-            Member member = em.find(Member.class, 150L); //데이터 찾아서
-            member.setName("ZZ");// 변경
-
+            em.persist(m);
             tx.commit();
         } catch(Exception e) {
             tx.rollback();
